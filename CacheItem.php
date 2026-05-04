@@ -129,7 +129,7 @@ class CacheItem implements PhpCacheItem
     /**
      * {@inheritdoc}
      */
-    public function getExpirationTimestamp()
+    public function getExpirationTimestamp(): int|null
     {
         return $this->expirationTimestamp;
     }
@@ -173,7 +173,7 @@ class CacheItem implements PhpCacheItem
     /**
      * {@inheritdoc}
      */
-    public function getPreviousTags()
+    public function getPreviousTags(): array
     {
         $this->initialize();
 
@@ -183,7 +183,7 @@ class CacheItem implements PhpCacheItem
     /**
      * {@inheritdoc}
      */
-    public function getTags()
+    public function getTags(): array
     {
         return $this->tags;
     }
@@ -191,7 +191,7 @@ class CacheItem implements PhpCacheItem
     /**
      * {@inheritdoc}
      */
-    public function setTags(array $tags)
+    public function setTags(array $tags): static
     {
         $this->tags = [];
         $this->tag($tags);
