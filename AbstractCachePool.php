@@ -326,7 +326,7 @@ abstract class AbstractCachePool implements PhpCachePool, LoggerAwareInterface, 
      *
      * @throws CachePoolException
      */
-    private function handleException(\Exception $e, $function)
+    private function handleException(\Exception $e, $function): never
     {
         $level = 'alert';
         if ($e instanceof InvalidArgumentException) {
@@ -346,7 +346,7 @@ abstract class AbstractCachePool implements PhpCachePool, LoggerAwareInterface, 
      *
      * @return bool
      */
-    public function invalidateTags(array $tags)
+    public function invalidateTags(array $tags): bool
     {
         $itemIds = [];
         foreach ($tags as $tag) {
@@ -367,7 +367,7 @@ abstract class AbstractCachePool implements PhpCachePool, LoggerAwareInterface, 
         return $success;
     }
 
-    public function invalidateTag($tag)
+    public function invalidateTag(string $tag): bool
     {
         return $this->invalidateTags([$tag]);
     }
