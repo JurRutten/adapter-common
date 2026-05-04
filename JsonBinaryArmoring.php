@@ -46,7 +46,7 @@ trait JsonBinaryArmoring
         return str_replace(
             static::$ESCAPE_JSON_CHARACTERS,
             static::$ENCODED_JSON_CHARACTERS,
-            utf8_encode($value)
+            mb_convert_encoding($value, 'UTF-8', 'ISO-8859-1')
         );
     }
 
@@ -59,10 +59,10 @@ trait JsonBinaryArmoring
      */
     protected static function jsonDeArmor($value)
     {
-        return utf8_decode(str_replace(
+        return mb_convert_encoding(str_replace(
             static::$ENCODED_JSON_CHARACTERS,
             static::$ESCAPE_JSON_CHARACTERS,
             $value
-        ));
+        ), 'ISO-8859-1', 'UTF-8');
     }
 }
