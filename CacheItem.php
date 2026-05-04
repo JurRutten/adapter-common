@@ -87,7 +87,7 @@ class CacheItem implements PhpCacheItem
     /**
      * {@inheritdoc}
      */
-    public function set($value): static
+    public function set(mixed $value): static
     {
         $this->value    = $value;
         $this->hasValue = true;
@@ -137,7 +137,7 @@ class CacheItem implements PhpCacheItem
     /**
      * {@inheritdoc}
      */
-    public function expiresAt($expiration): static
+    public function expiresAt(?\DateTimeInterface $expiration): static
     {
         if ($expiration instanceof \DateTimeInterface) {
             $this->expirationTimestamp = $expiration->getTimestamp();
@@ -153,7 +153,7 @@ class CacheItem implements PhpCacheItem
     /**
      * {@inheritdoc}
      */
-    public function expiresAfter($time): static
+    public function expiresAfter(int|\DateInterval|null $time): static
     {
         if ($time === null) {
             $this->expirationTimestamp = null;
